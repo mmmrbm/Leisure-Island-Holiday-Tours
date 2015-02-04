@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/Polonnaruwa_sandakada.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/Polonnaruwa.jpg" alt="Polonnaruwa">
+		</div>
+		<div id="main">
+			<h1>Polonnaruwa</h1>
+			
+			<p style="text-align:justify;">Polonnaruwa is the second most ancient city of Sri Lanka's kingdoms; it has been declared a World Heritage site by UNESCO.  city's well preserved relics and tanks testify the ancient glory; such as Parakrama Samudraya (Tank), impressive 17m high Lankatilaka temple, The Gal Viharaya which is a rock temple containing four Buddha statues have been carved on granite, ruins of 31m high and 3m thick walls of The Royal Palace, the Thivanka image house that has 26 feet Buddha statue, which were all built by king Parakramabahu the great between 1153-1186. Other popular destinations are the Thuparamaya which is a building where the roof was made completely out of bricks, Medirigiriya Vatadage( a Buddhist structure ), Nissanka Latha Mandapaya ( an ancient building ), Rankoth Vehera( 180 feet stupa/temple), Kiri Vihara ( stupa/temple ), Satmahal Prasadaya(pyramid-shaped, seven storied building), Hatadage( an ancient relic shrine), Lotus Pond, Somawathiya Chaitya(temple), Dimbulagala Monastery and 11 feet high granite Statue of King Parakramabahu at Polonnaruwa.  Wasgamuwa National Park and Angammedilla National Park, which belong to Polonnaruwa District, are excellent places for elephants and birds watching. </p>
+	
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/polonnaruwa/Gal_Viharaya .jpg?lol=lol" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Gal_Viharaya .jpg" width="60" height="60" alt="Gal Viharaya " /></a></li>
+				<li><a href="images/fullscreen/polonnaruwa/Kuttam_Pond.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Kuttam_Pond.jpg" width="60" height="60" alt="Kuttam Pond" /></a></li>
+				<li><a href="images/fullscreen/polonnaruwa/Nissanka_Latha_Mandapaya.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Nissanka_Latha_Mandapaya.jpg" width="60" height="60" alt="Nissanka Latha Mandapya" /></a></li>
+				<li><a href="images/fullscreen/polonnaruwa/Parakkrama_Tank.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Parakkrama_Tank.jpg" width="60" height="60" alt="Parakkrama Tank" /></a></li>
+				<li><a href="images/fullscreen/polonnaruwa/Parakramabahu_Statue.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Parakramabahu_Statue.jpg" width="60" height="60" alt="Parakramabahu Statue" /></a></li>
+				<li><a href="images/fullscreen/polonnaruwa/Rankoth_Vehera.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Rankoth_Vehera.jpg" width="60" height="60" alt="Rankoth Vehera" /></a></li>
+				<li><a href="images/fullscreen/polonnaruwa/Royal_Palace.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Royal_Palace.jpg" width="60" height="60" alt="Royal Palace" /></a></li>
+				<li><a href="images/fullscreen/polonnaruwa/Wasgamuwa_Nationalpark.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/polonnaruwa/Wasgamuwa_Nationalpark.jpg" width="60" height="60" alt="Wasgamuwa Nationalpark" /></a></li>
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/nuwaraeliya100.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/nuwaraeliyatea.jpg" alt="Nuwara Eliya">
+		</div>
+		<div id="main">
+			<h1>NuwaraEliya</h1>
+			
+			<p style="text-align:justify;">Nuwara Eliya is a dazzling city, with an altitude of 1868m, situated in the central province of Sri Lanka.
+			Because of the cool climate it has, annual average temperature 16 oC, the city is called "The little England". 
+			The world's finest tea, the Ceylon Tea, is the main production of the city, alone with vegetables, fruits and flowers. 
+			Annual festival season starts from April 1st coincide with upcoming Sri Lankan New Year in April 14th. Motor racing, go cart racing and horse racing events are held in the festive season, and culminating with the Governor's Cup Golf Tournament and a flower show. 
+			Victoria Park, Hakgala botanical gardens, Golf course, Galway's Land Bird Sanctuary, Trout streams, Waterfalls, Panorama of tea planted valleys and mountains, Colonial British styled architecture with gardens and Boating or Fishing on Lake Gregory are other attractions in this picturesque city. Sri Lanka's tallest mountain, the Piduruthalagala (Mt.Pedro) and island's highest plateau, the Horton Plains can be reached from Nuwara Eliya. </p>
+	
+			
+	
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/nuwaraeliya/colonial architecture.jpg?lol=lol" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/colonial architecture.jpg" width="60" height="60" alt="Colonial Architecture" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/garden.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/garden.jpg" width="60" height="60" alt="Garden" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/golf club.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/golf club.jpg" width="60" height="60" alt="Golf club" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/gregory lake.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/gregory lake.jpg" width="60" height="60" alt="Gregory lake" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/hakgala botanicalgardens.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/hakgala botanicalgardens.jpg" width="60" height="60" alt="Hakgala botanicalgardens" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/lush greenery.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/lush greenery.jpg" width="60" height="60" alt="Lush greenery" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/tea plantations.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/tea plantations.jpg" width="60" height="60" alt="Tea plantations" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/tea valleys.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/tea valleys.jpg" width="60" height="60" alt="Tea valleys" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/train journey.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/train journey.jpg" width="60" height="60" alt="Train journey" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/victoria park.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/victoria park.jpg" width="60" height="60" alt="Victoria park" /></a></li>
+				<li><a href="images/fullscreen/nuwaraeliya/waterfall.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/nuwaraeliya/waterfall.jpg" width="60" height="60" alt="Waterfall" /></a></li>
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

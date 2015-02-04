@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/great basses Light house .jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/kirinda.jpg" alt="Kirinda">
+		</div>
+		<div id="main">
+			<h1>Kirinda</h1>
+			
+			<p style="text-align:justify;">Kirinda is a small port village located in the southern Sri Lanka, about 245Km from Colombo, adjacent to Kataragama and Yala. Kirinda ancient Buddhist temple which is located on top of a rock, it has 2000 years of history, is one of the biggest attractions in here and other one is two light houses, 12 and 13Km off the shore, which was built on reefs called Great Basses reef and the Little Basses reef. The reason to build the lighthouses was that coastal area around kirinda contains lots of rocks, the main shipping route that connecting east to west run along Sri Lankan coast, and many ships that had ruined; has made this coastal area a popular scuba diving destination. Another famous landmark is the statue of Queen Viharamaha Devi, Mother of the Sri Lanka's greatest king Dutugemunu. 
+			</p>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			
+			
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/kirinda/diving.jpg?lol=lol" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kirinda/diving.jpg" width="60" height="60" alt="Diving" /></a></li>
+				<li><a href="images/fullscreen/kirinda/kirinda beach.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kirinda/kirinda beach.jpg" width="60" height="60" alt="Kirinda beach"/></a></li>
+				<li><a href="images/fullscreen/kirinda/kirinda temple.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/kirinda/kirinda temple.jpg" width="60" height="60" alt="Kirinda temple" /></a></li>
+				<li><a href="images/fullscreen/kirinda/lighthouse.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kirinda/lighthouse.jpg" width="60" height="60" alt="Light house" /></a></li>
+				<li><a href="images/fullscreen/kirinda/viharamahadevi.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kirinda/viharamahadevi.jpg" width="60" height="60" alt="Vihara Maha Devi" /></a></li>
+				<li><a href="images/fullscreen/kirinda/wrecked ship.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kirinda/wrecked ship.jpg" width="60" height="60" alt="Wrecked ship" /></a></li>
+					
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

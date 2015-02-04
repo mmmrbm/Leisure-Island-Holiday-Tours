@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/sripada.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/adamspeak.jpg" alt="Adam's Peak">
+		</div>
+		<div id="main">
+			<h1>Adam's Peak</h1>
+			
+			<p style="text-align:justify;">Well know name is The Sri Pada, mean sacred footprint, a 7359 ft. tall Mountain located in Rathnapura District of 
+			Sabaragamuwa Province of Sri Lanka. The Mountain and adjacent area is a wild reserve with many endemic species. Sri Pada 
+			is another significant sacred site for Buddhists as they believe the indentation resembling a footprint at the summit belongs 
+			to Lord Buddha. The pilgrimage season start in December full moon to May full moon. Climbing the mountain in off season is bit 
+			difficult because of rain and mist but it would be an adventurous journey for thrill seekers to do so. Watching the sunrise 
+			from top of the mountain is another target of pilgrims and tourists. Breathtaking views and enchanting forested sanctuary 
+			create a perfect Eco-tourism destination for the island. </p>
+			
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			
+		
+				
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/adamspeak/lushgreen-sripada.jpg?lol=lol" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/lushgreen-sripada.jpg" width="60" height="60" alt="Lush and Green Surrounding" /></a></li>
+				<li><a href="images/fullscreen/adamspeak/sripada-atdistance.jpg" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/sripada-atdistance.jpg" width="60" height="60" alt="Sri Pada at a Distance" /></a></li>
+				<li><a href="images/fullscreen/adamspeak/sripada-mountain.jpg" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/sripada-mountain.jpg" width="60" height="60" alt="Sri Pada Mountain"/></a></li>
+				<li><a href="images/fullscreen/adamspeak/sripada-night.jpg" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/sripada-night.jpg" width="60" height="60" alt="At Night" /></a></li>
+				<li><a href="images/fullscreen/adamspeak/sripada-reserve.jpg" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/sripada-reserve.jpg" width="60" height="60" alt="Sri Pada Reserve" /></a></li>
+				<li><a href="images/fullscreen/adamspeak/sripada-stairs.jpg" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/sripada-stairs.jpg" width="60" height="60" alt="Path Way to Top" /></a></li>
+				<li><a href="images/fullscreen/adamspeak/sripada-temple.jpg" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/sripada-temple.jpg" width="60" height="60" alt="Sri Pada Temple" /></a></li>
+				<li><a href="images/fullscreen/adamspeak/sunrise-adamspeak.jpg" rel="prettyPhoto[gallery1]" title=""><img src="images/thumbnails/adamspeak/sunrise-adamspeak.jpg" width="60" height="60" alt="Sun Rise" /></a></li>
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

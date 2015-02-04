@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/lake.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/wild-life.jpg" alt="Yala">
+		</div>
+		<div id="main">
+			<h1>Yala</h1>
+			<p style="text-align:justify;">The most visited national park in Sri Lanka, The Yala National Park, is situated in southeast region of the island. 
+			The park covers 979 Km2 and 300Km from Colombo. Yala Park consists of 5 blocks. Park gives home for variety of wild animals.
+			 Sri Lankan Leopards which is one of the highest leopard densities in the world, Elephants, Sri Lankan Sloth Bear,
+			  Wild water buffalos, Rilawa Monkeys, Golden Palm Civet, Red Slender Loris, and Fishing Cat are some of mammals from 44 mammal species that have been recorded. 
+			  There are 215 bird species in the Park, six are endemic to Sri Lanka They are Sri Lanka Grey Hornbill, Sri Lanka Jungle fowl,
+			   Sri Lanka Wood Pigeon, Crimson-fronted Barbet, Black-capped Bulbul, and Brown-capped Babbler. 
+			   90 species of water birds also can be found and half of them are migrants. 
+			   Lesser Flamingo, Pelican, Purple heron, Night heron, Egrets, Purple Swamphen and Oriental Darter are some of other birds draw to the Yala Lagoons. The Reptiles have been found from the park is 46 and 5 of them are endemic. They are Sri Lanka Krait, Boulenger's Keelback, Sri Lankan Flying Snake, Painted-lip-Lizard and Wiegmann's Agama. 18 amphibians, 21 species of fresh water fishes, crocodiles, snakes, vipers, and turtles can be also found in the Yala National Park. 
+			</p>
+			
+			
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/yala/leopard.jpg?lol=lol" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/leopard.jpg" width="60" height="60" alt="Leopard resting on a tree" /></a></li>
+				<li><a href="images/fullscreen/yala/monkeys.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/monkeys.jpg" width="60" height="60" alt="Monkeys"/></a></li>
+				<li><a href="images/fullscreen/yala/crocodile.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/yala/crocodile.jpg" width="60" height="60" alt="Crocodile" /></a></li>
+				<li><a href="images/fullscreen/yala/eagle.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/eagle.jpg" width="60" height="60" alt="Eagle" /></a></li>
+				<li><a href="images/fullscreen/yala/elephant.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/elephant.jpg" width="60" height="60" alt="Elephant" /></a></li>
+				<li><a href="images/fullscreen/yala/elephant-and-other-animals.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/elephant-and-other-animals.jpg" width="60" height="60" alt="Elephant with other animals" /></a></li>
+				<li><a href="images/fullscreen/yala/fluying-peacock.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/fluying-peacock.jpg" width="60" height="60" alt="Peacock flying" /></a></li>	
+				<li><a href="images/fullscreen/yala/geen-pigeon.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/geen-pigeon.jpg" width="60" height="60" alt="Green pigeon" /></a></li>	
+				<li><a href="images/fullscreen/yala/green-bee-eater.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/green-bee-eater.jpg" width="60" height="60" alt="Green bee eater" /></a></li>	
+				<li><a href="images/fullscreen/yala/img_8827komp.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/img_8827komp.jpg" width="60" height="60" alt="" /></a></li>	
+				<li><a href="images/fullscreen/yala/img_8860komp.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/img_8860komp.jpg" width="60" height="60" alt="" /></a></li>	
+				<li><a href="images/fullscreen/yala/pelicans.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/pelicans.jpg" width="60" height="60" alt="Pelicans" /></a></li>	
+				<li><a href="images/fullscreen/yala/python.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/yala/python.jpg" width="60" height="60" alt="Python" /></a></li>	
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

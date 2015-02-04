@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/sigiriya-frescoes.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/sigiriya-dambulla.jpg" alt="Sigiriya">
+		</div>
+		<div id="main">
+			<h1>Sigiriya</h1>
+			
+			<p>Built in the 5th century AD this magnificent complex of geometrically laid gardens, pools, fountains 
+			(still working today) as well as oldest surviving murals of maidens has been the palace of the King Kasyapa.
+			Built on top of a 200m high rock, the entrance to the climb once has been through a lion's head only the 
+			huge paws remaian today. Half way up the rock are beautifully drawn painted bare breast Maidens whose existence 
+			is still a mystery. The occupation of the gigantic fortress ended when Kasyapa killed himself in a 
+			battle with his brother.
+			UNESCO has declared as a world heritage site in 1982.</p>
+			<p>For more info visit wikipedia: <a href="http://en.wikipedia.org/wiki/Sigiriya" target="_blank">Sigiriya</a></p>
+			<br>
+			<h1>Dambulla</h1>
+			
+			<p>There are over 80 caves in the surrounding whereas major attractions are spread in 5 caves which contain 
+			the statues and the paintings of lord Buddha, gods, goddesses and Sri Lankan kings. Since its founding in the 
+			1st century BC by King Valagamba, many improvements and additions have been carried out to the sculptures and 
+			paintings over the years. Hindu statues are believed to be of the 12th century AD and the latest paintings 
+			are of the late 18th century.</p>
+			<p>For more info visit wikipedia: <a href="http://en.wikipedia.org/wiki/Dambulla_cave_temple" target="_blank">Dambulla</a></p>			
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/sigiriya/sigiriya-areal-view.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/sigiriya/sigiriya-areal-view.jpg" width="60" height="60" alt="Areal view" /></a></li>
+				<li><a href="images/fullscreen/sigiriya/sigiriya-rock.jpg?lol=lol" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/sigiriya/sigiriya-rock.jpg" width="60" height="60" alt="Sigiriya Rock"/></a></li>
+				<li><a href="images/fullscreen/sigiriya/sigiriya-view-from-entrance.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/sigiriya/sigiriya-view-from-entrance.jpg" width="60" height="60" alt="Sigiriya view from entrance" /></a></li>
+				<li><a href="images/fullscreen/sigiriya/sigiriya-pond.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/sigiriya/sigiriya-pond.jpg" width="60" height="60" alt="Small water pond in Sigiriya" /></a></li>
+				<li><a href="images/fullscreen/sigiriya/sigiri-graffiti.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/sigiriya/sigiri-graffiti.jpg" width="60" height="60" alt="Graffiti on Mirror Wall" /></a></li>
+				<li><a href="images/fullscreen/sigiriya/frescoes.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/sigiriya/frescoes.jpg" width="60" height="60" alt="Frescoes" /></a></li>
+				<li><a href="images/fullscreen/sigiriya/kings-throne.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/sigiriya/kings-throne.jpg" width="60" height="60" alt="King Kashyapa's throne" /></a></li>
+				<li><a href="images/fullscreen/sigiriya/sigiriya-view-from-top.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/sigiriya/sigiriya-view-from-top.jpg" width="60" height="60" alt="View from top" /></a></li>
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

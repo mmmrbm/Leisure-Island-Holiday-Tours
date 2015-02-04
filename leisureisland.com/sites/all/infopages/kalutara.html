@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/kalu.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/kaluthara.jpg" alt="Kaluthara">
+		</div>
+		<div id="main">
+			<h1>Kalutara</h1>
+			
+			<p style="text-align:justify;">Kalutara, approximately 40 Km south to Colombo, is home to sacred Buddhist temple of Kalutara 
+			Bodiya. The most recognizable landmark of Kalutara city, the temple's dagoba, is one of a few dagobas that you are permitted 
+			to enter in the island, and it is the world's only hollow Buddhist shrine, the interior contains 74 murals of depicting 
+			various moments of the Buddha's life. Calido beach, a thin land which runs between Kalu Ganga (Black River) and the Indian 
+			Ocean, is another example for popular island beaches.  Canoeing and Kayaking in Kalu River becoming popular among tourists 
+			as the river provides calm and peaceful environment for eco- tourism. One of the largest caves in Sri Lanka; the 
+			Fa Hien cave(450ft)  in Bulathsinhala which gives evident of prehistoric inhabitants of the cave and their lifestyles, 
+			and Richmond Castle which is also maintain a children's home are another must visit places in Kalutara.
+			</p>
+			<br/>
+			<br/>
+			<br/>
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/kaluthara/beach sunset.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kaluthara/beach sunset.jpg" width="60" height="60" alt="Beach sunset" /></a></li>
+				<li><a href="images/fullscreen/kaluthara/kalu river.jpg?lol=lol" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kaluthara/kalu river.jpg" width="60" height="60" alt="Kalu river"/></a></li>
+				<li><a href="images/fullscreen/kaluthara/kaluthara beach.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/kaluthara/kaluthara beach.jpg" width="60" height="60" alt="Kaluthara beach" /></a></li>
+				<li><a href="images/fullscreen/kaluthara/kaluthara bridge.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kaluthara/kaluthara bridge.jpg" width="60" height="60" alt="Kaluthara bridge" /></a></li>
+				<li><a href="images/fullscreen/kaluthara/kayaking.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kaluthara/kayaking.jpg" width="60" height="60" alt="Kayaking" /></a></li>
+				<li><a href="images/fullscreen/kaluthara/kuluthara bodhiya.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kaluthara/kuluthara bodhiya.jpg" width="60" height="60" alt="Kuluthara bodhiya" /></a></li>
+				<li><a href="images/fullscreen/kaluthara/richmond castle.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/kaluthara/richmond castle.jpg" width="60" height="60" alt="Richmond castle" /></a></li>	
+			</ul>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/bentota.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/bentota river.jpg" alt="Bentota">
+		</div>
+		<div id="main">
+			<h1>Bentota</h1>
+			
+			<p style="text-align:justify;">A coastal town of Benthota is situated on the southern bank of the Bentota River mouth, about 65Km south from Colombo. Benthota River and lagoon provide one of a perfect places to canoeing, jet-skiing, boat trips for bird and reptile watching and fishing in Sri Lanka. Stunning Benthota beach is an ideal place for swimming, body-surfing, diving, jet-skiing, windsurfing, parasailing and relaxing. Apart from the sea and the river, other attractions in benthota and suburbs  are turtle hatchery that located on Induruwa beach, a horticulture marvel of Brief Garden, Meetiyagoda Moonstone mine and Kande Viharaya in Aluthgama Which has the tallest sitting Buddha statue(160ft)  in the world.
+			</p>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/bentota/boat surfing.jpg?lol=lol" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/bentota/boat surfing.jpg" width="60" height="60" alt="Boat surfing" /></a></li>
+				<li><a href="images/fullscreen/bentota/boating in bentota river.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/bentota/boating in bentota river.jpg" width="60" height="60" alt="Boating in Bentota river"/></a></li>
+				<li><a href="images/fullscreen/bentota/brief garden entry.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/bentota/brief garden entry.jpg" width="60" height="60" alt="Brief garden entry" /></a></li>
+				<li><a href="images/fullscreen/bentota/canoeing compitition.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/bentota/canoeing compitition.jpg" width="60" height="60" alt="Canoeing competition" /></a></li>
+				<li><a href="images/fullscreen/bentota/kande viharaya.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/bentota/kande viharaya.jpg" width="60" height="60" alt="Kande Viharaya" /></a></li>
+				<li><a href="images/fullscreen/bentota/moon gate of brief garden.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/bentota/moon gate of brief garden.jpg" width="60" height="60" alt="Moon gate of Brief garden" /></a></li>
+				<li><a href="images/fullscreen/bentota/water sport.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/bentota/water sport.jpg" width="60" height="60" alt="Water sport" /></a></li>	
+				<li><a href="images/fullscreen/bentota/wind surfing.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/bentota/wind surfing.jpg" width="60" height="60" alt="Wind surfing" /></a></li>	
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

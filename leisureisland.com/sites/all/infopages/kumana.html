@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/left.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/birds.jpg" alt="Kumana">
+		</div>
+		<div id="main">
+			<h1>Kumana</h1>
+			
+			<p style="text-align:justify;">Most renowned national park for birds, the kumana national park was formerly called as Yala East National Park and it was declared as a bird sanctuary in 1938 , 391 kilometers southeast of Colombo.
+			 Kumbukkan Oya (tank), 20 lagoons and tanks provide an ideal place for birdlife and make it one of the most important bird nesting and breeding grounds in Sri Lanka. 
+			 Species of birds that have been identified is 255, between April to July tens of thousand of migratory birds can be seen in the park such as Black-necked Stork, Lesser Adjutant, Eurasian Spoonbill, and Great Thick-knee. 
+			 Some species like Pintail Snipes migrate here flying 9,000 kilometers from Siberia. Asian Openbill, Purple Heron, Black-crowned Night Heron, Spot-billed Pelican, Little Cormorant, White-breasted Waterhen, Pacific Golden Plover, Lesser Whistling Duck and Little Grebe are among other the bird species migrate here in large flocks. Mugger Crocodile, Indian Flap-shelled Turtle and Indian Black Turtle are the common reptiles inhabiting the park. Mammals such as Golden Jackal, Wild Boar, Sri Lankan Elephant, European Otter, and Fishing Cat also use this bird sanctuary as their habitat.  </p>
+	
+			
+			
+	
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/kumana/bird.jpg?lol=lol" rel="prettyPhoto[gallery1]" title="Bird"><img src="images/thumbnails/kumana/bird.jpg" width="60" height="60" alt="Bird" /></a></li>
+				<li><a href="images/fullscreen/kumana/bird sanctuary.jpg" rel="prettyPhoto[gallery1]" title="Bird sanctuary"><img src="images/thumbnails/kumana/bird sanctuary.jpg" width="60" height="60" alt="Bird sanctuary" /></a></li>
+				<li><a href="images/fullscreen/kumana/ducks.jpg" rel="prettyPhoto[gallery1]" title="Ducks"><img src="images/thumbnails/kumana/ducks.jpg" width="60" height="60" alt="Ducks" /></a></li>
+				<li><a href="images/fullscreen/kumana/kumana birds.jpg" rel="prettyPhoto[gallery1]" title="Kumana birds"><img src="images/thumbnails/kumana/kumana birds.jpg" width="60" height="60" alt="Kumana birds" /></a></li>
+				<li><a href="images/fullscreen/kumana/kumana waterbirds.jpg" rel="prettyPhoto[gallery1]" title="Kumana waterbirds"><img src="images/thumbnails/kumana/kumana waterbirds.jpg" width="60" height="60" alt="Kumana water birds" /></a></li>
+				<li><a href="images/fullscreen/kumana/nesting.jpg" rel="prettyPhoto[gallery1]" title="Nesting"><img src="images/thumbnails/kumana/nesting.jpg" width="60" height="60" alt="Nesting" /></a></li>
+				<li><a href="images/fullscreen/kumana/peacock.jpg" rel="prettyPhoto[gallery1]" title="Peacock"><img src="images/thumbnails/kumana/peacock.jpg" width="60" height="60" alt="Peacock" /></a></li>
+				
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

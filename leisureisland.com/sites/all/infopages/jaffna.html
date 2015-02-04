@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/jaffna.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/Nallur.jpg" alt="Jaffna">
+		</div>
+		<div id="main">
+			<h1>Jaffna</h1>
+			<p style="text-align:justify;">Jaffna is located in the Jaffna peninsula of northern Sri Lanka, 396Km from Colombo. 
+			In the colonial era of Portuguese, Dutch and English, Jaffna had been an important administrative city. 
+			As a result of Sri Lanka's Civil war started in 1983, Jaffna lost its reputation as a tourist hotspot. After the war ended 
+			in 2009, Jaffna has been booming in tourism as well as other areas. The Jaffna lagoon is an excellent place for bird watching 
+			as it attracts wide variety of water birds including American flamingoes, ducks, gulls and terns. At the water's edge of the 
+			lagoon, there is the second largest existing Fort of the island which was originally built by Portuguese in 1619 and expanded 
+			by Dutch. Nallur Temple, Jaffna library, Nainatheeve isle, Casuarina beach and Nagadeepa Buddhist temple, a group of Dagobas 
+			situated close together in Kandarodai are other significant must see places in Jaffna.  
+			</p>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/jaffna/flamingos.jpg?lol=lol" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/flamingos.jpg" width="60" height="60" alt="Flamingos"/></a></li>
+				<li><a href="images/fullscreen/jaffna/jaffna beach.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/jaffna beach.jpg" width="60" height="60" alt="Jaffna beach" /></a></li>
+				<li><a href="images/fullscreen/jaffna/jaffna fort.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/jaffna/jaffna fort.jpg" width="60" height="60" alt="Jaffna fort" /></a></li>
+                <li><a href="images/fullscreen/jaffna/kandarodai.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/kandarodai.jpg" width="60" height="60" alt="Kandarodai dagabos" /></a></li>
+				<li><a href="images/fullscreen/jaffna/jaffna grapes.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/jaffna grapes.jpg" width="60" height="60" alt="Jaffna grapes" /></a></li>
+				<li><a href="images/fullscreen/jaffna/jaffna lagoon.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/jaffna lagoon.jpg" width="60" height="60" alt="Jaffna lagoon" /></a></li>
+				<li><a href="images/fullscreen/jaffna/jaffna library.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/jaffna library.jpg" width="60" height="60" alt="Jaffna library" /></a></li>
+				<li><a href="images/fullscreen/jaffna/nagadeepa temple.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/nagadeepa temple.jpg" width="60" height="60" alt="Nagadeepa temple" /></a></li>
+				<li><a href="images/fullscreen/jaffna/nallur temple.jpg" rel="prettyPhoto[gallery1]" ><img src="images/thumbnails/jaffna/nallur temple.jpg" width="60" height="60" alt="Nallur temple" /></a></li>		
+			</ul>
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

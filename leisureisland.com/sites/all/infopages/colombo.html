@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/colombo.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/galleface.jpg" alt="Colombo">
+		</div>
+		<div id="main">
+			<h1>Colombo</h1>
+			
+			<p style="text-align:justify;">Colombo is the largest city and the commercial capital of Sri Lanka. City is located on the 
+			west coast of the island. Colombo was the capital of Sri Lanka until 80s and then the administrative capital moved to Kotte. 
+			Colombo port has been the main port since the colonial era and now it is one of the busiest ports of the world. Colombo city 
+			is divided 15 numbered areas for postal purposes. Bandaranayke international airport in katunayake is the main international 
+			airport in the country and a passenger can reach Colombo from the airport in 20 minutes via expressway. 
+			Colombo city's most recognizable land mark is twin towers of world trade center. Independence hall at independence square, 
+			The Galle face green; the half Km long coast of Colombo, Viharamahadevi park, Beira Lake, National Museum of Colombo, 
+			National zoological gardens in dehiwala, Gangarama Buddhist temple, Athidiy wet land, Royal Colombo golf club, 
+			Old Parliament building, Nelum Pokuna Theatre, BMICH; the Convention & Exhibition Centre  are other major tourist attractions 
+			in Colombo and suburbs. </p>
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/colombo/independance square.jpg?lol=lol" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/independance square.jpg" width="60" height="60" alt="Independance square" /></a></li>
+				<li><a href="images/fullscreen/colombo/beira lake.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/beira lake.jpg" width="60" height="60" alt="Beira lake" /></a></li>
+				<li><a href="images/fullscreen/colombo/bolgodariver rowing.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/bolgodariver rowing.jpg" width="60" height="60" alt="Bolgoda river rowing" /></a></li>
+				<li><a href="images/fullscreen/colombo/colombocity tourcoach.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/colombocity tourcoach.jpg" width="60" height="60" alt="Colombo city tour coach" /></a></li>
+				<li><a href="images/fullscreen/colombo/colombo golfclub.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/colombo golfclub.jpg" width="60" height="60" alt="Colombo golf club" /></a></li>
+				<li><a href="images/fullscreen/colombo/kollupitiya market.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/kollupitiya market.jpg" width="60" height="60" alt="Kollupitiya market" /></a></li>
+				<li><a href="images/fullscreen/colombo/nelumpokuna theatre.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/nelumpokuna theatre.jpg" width="60" height="60" alt="Nelum Pokuna theatre" /></a></li>
+				<li><a href="images/fullscreen/colombo/seemamalakaya.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/colombo/seemamalakaya.jpg" width="60" height="60" alt="Seemamalakaya" /></a></li>
+				
+			</ul>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

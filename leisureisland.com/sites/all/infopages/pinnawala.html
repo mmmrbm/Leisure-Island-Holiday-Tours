@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/eleph.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/pinnawala.jpg" alt="Pinnawala">
+		</div>
+		<div id="main">
+			<h1>Pinnawala</h1>
+			<p style="text-align:justify;">Pinnawala village is famous for its Elephant Orphanage, which gives protection to wild Asian 
+			elephants. It is located in kegalle town in sabaragamuwa province. Pinnawala is well-known for having the largest herd of 
+			captive elephants in the world. Orphanage was started by Sri Lankan department of wildlife conservation in 1975 for baby 
+			elephants who lost or abandon by their mothers. Elephant breeding program started in 1982 and once they reached adulthood, 
+			the elephants are donated, sold or released to wild while disabled retain for further care. The female and young elephants 
+			in Pinnawala range freely as a herd during the day. Tourist can witness elephants bathing, drinking in the river and bottle 
+			feeding of baby elephants born in Pinnawala.</p>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>	
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/pinnawala/baby elephant.jpg?lol=lol" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/pinnawala/baby elephant.jpg" width="60" height="60" alt="Baby elephant" /></a></li>
+				<li><a href="images/fullscreen/pinnawala/bathing time.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/pinnawala/bathing time.jpg" width="60" height="60" alt="Bathing time" /></a></li>
+				<li><a href="images/fullscreen/pinnawala/eating time.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/pinnawala/eating time.jpg" width="60" height="60" alt="Eating time" /></a></li>
+				<li><a href="images/fullscreen/pinnawala/elephants orphanage.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/pinnawala/elephants orphanage.jpg" width="60" height="60" alt="Elephants orphanage" /></a></li>
+				<li><a href="images/fullscreen/pinnawala/feeding.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/pinnawala/feeding.jpg" width="60" height="60" alt="Feeding" /></a></li>
+				<li><a href="images/fullscreen/pinnawala/mother and baby.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/pinnawala/mother and baby.jpg" width="60" height="60" alt="Mother and baby" /></a></li>			
+			</ul>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>

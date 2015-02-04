@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery lightbox clone - prettyPhoto - by Stephane Caron</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+		<!--script src="js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
+		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+			* { margin: 0; padding: 0; }
+			
+			body {
+			    background-image:url('backgrounds/mihin.jpg');
+				background-size:435px 470px;
+				background-repeat:no-repeat;
+				font: 62.5%/1.2 Arial, Verdana, Sans-Serif;
+				padding: 0 20px;
+			}
+			
+			h1 { font-family: Georgia; font-style: italic; margin-bottom: 10px; }
+			
+			h2 {
+				font-family: Georgia;
+				font-style: italic;
+				margin: 25px 0 5px 0;
+			}
+			
+			p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background-color: rgba(255, 255, 255, 0.7);
+				position:absolute;
+				top:0px;
+				left:0px;
+				margin: 0 auto;
+				padding: 20px;
+				width: 400px;
+			}
+			
+			#city_image {
+				position:absolute;
+				top:0px;
+				left:440px;
+				margin: 0 auto;
+				padding: 0px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="city_image">
+		   <img src="backgrounds/mihintale.jpg" alt="Mihintale">
+		</div>
+		<div id="main">
+			<h1>Mihinthale</h1>
+			
+			<p style="text-align:justify;">Mihintale, the cradle of Sinhalese Buddhist civilization, is about 1000 feet rock which is 
+			located 12 Km east to world heritage site of Anuradhapura. Mihintale is believed to be the place, where The Buddhism was 
+			introduced to Sri Lanka in the 3rd BC. According to the history, Arahath Monk Mahinda, the son of the Indian emperor Asoka, 
+			met King Devanampiya Thissa of Sri Lanka to preach the doctrine at the Mihintale. On the full moon day of June every year 
+			Buddhists pilgrimage to Mihintale to commemorate this event. There are 1840 granite steps leading to the summit. Ruins of a 
+			hospital can be noticed at the foot of the mountain and a stone canoe for medical bath has been discovered along with stone 
+			inscriptions and urns. Kantacha chetiya, Mihintale museum, ruins of Mihintale monastery, caves, and ponds imply ancient 
+			grandeur of the Mihintale.</p>	
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+            <br>
+			<br>
+			<br>
+			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/fullscreen/mihintale/cave.jpg?lol=lol" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/mihintale/cave.jpg" width="60" height="60" alt="Cave" /></a></li>
+				<li><a href="images/fullscreen/mihintale/dagoba.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/mihintale/dagoba.jpg" width="60" height="60" alt="Dagoba" /></a></li>
+				<li><a href="images/fullscreen/mihintale/mihintale.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/mihintale/mihintale.jpg" width="60" height="60" alt="Mihintale rock" /></a></li>
+				<li><a href="images/fullscreen/mihintale/naaga pond.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/mihintale/naaga pond.jpg" width="60" height="60" alt="Naaga pond" /></a></li>
+				<li><a href="images/fullscreen/mihintale/pond.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/mihintale/pond.jpg" width="60" height="60" alt="Pond" /></a></li>
+				<li><a href="images/fullscreen/mihintale/stairs.jpg" rel="prettyPhoto[gallery1]"><img src="images/thumbnails/mihintale/stairs.jpg" width="60" height="60" alt="Stairs" /></a></li>
+				
+			</ul>
+
+			<br/>
+			<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$("area[rel^='prettyPhoto']").prettyPhoto();
+				
+				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
+				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
+		
+				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+					changepicturecallback: function(){ initialize(); }
+				});
+
+				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+					changepicturecallback: function(){ _bsap.exec(); }
+				});
+			});
+			</script>
+	</div>
+	</body>
+</html>
