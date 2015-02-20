@@ -22,64 +22,65 @@ function mywebform_extra_form_alter(&$form, &$form_state, $form_id) {
 
 
 function store_hotel_details(&$form, &$form_state) {
-  global $user;
+	global $user;
 
-  // Changes can be made to the Webform node settings by modifying this variable:
-  $form['#node']->webform;
+	// Changes can be made to the Webform node settings by modifying this variable:
+	$form['#node']->webform;
 
-  // Insert things into other database tables or modify properties.
-  $data = $form['submitted'];
-  
-  db_insert('__hotel_details')
-     ->fields(array(
-       'hotelid' => $data['hotel_id']['#value'],
-       'hotelname' => $data['hotel_name']['#value'],
-       'nearestcity' => $data['nearest_city']['#value'],
-       'hotelemail' => $data['hotel_email']['#value'],
-       'hoteltelephone' => $data['hotel_telephone']['#value'],
-       'hotelrating' => $data['hotel_rating']['#value'],
-       'hotelremarks' => $data['remarks']['#value'],
-  ))
-  ->execute();
+	// Insert things into other database tables or modify properties.
+	$data = $form['submitted'];
+		  
+	db_merge('__hotel_details')
+		  ->key(array('hotelid' => $data['hotel_id']['#value']))
+		  ->fields(array(
+			   'hotelname' => $data['hotel_name']['#value'],
+			   'nearestcity' => $data['nearest_city']['#value'],
+			   'hotelemail' => $data['hotel_email']['#value'],
+			   'hoteltelephone' => $data['hotel_telephone']['#value'],
+			   'hotelrating' => $data['hotel_rating']['#value'],
+			   'hotelremarks' => $data['remarks']['#value'],
+		  ))
+	->execute();
 }
 
 function store_tour_details(&$form, &$form_state) {
-  global $user;
+	global $user;
 
-  // Changes can be made to the Webform node settings by modifying this variable:
-  $form['#node']->webform;
+	// Changes can be made to the Webform node settings by modifying this variable:
+	$form['#node']->webform;
 
-  // Insert things into other database tables or modify properties.
-  $data = $form['submitted'];
-  
-  db_insert('__tour_details')
-     ->fields(array(
-       'tourid' => $data['tour_id']['#value'],
-       'tourname' => $data['tour_name']['#value'],
-       'city_day_1' => $data['city_day_1']['#value'],
-       'city_day_2' => $data['city_day_2']['#value'],
-       'city_day_3' => $data['city_day_3']['#value'],
-       'city_day_4' => $data['city_day_4']['#value'],
-       'spandays' => $data['no_of_days']['#value'],
-  ))
-  ->execute();
+	// Insert things into other database tables or modify properties.
+	$data = $form['submitted'];
+		  
+	db_merge('__tour_details')
+		  ->key(array('tourid' => $data['tour_id']['#value']))
+		  ->fields(array(
+				'tourname' => $data['tour_name']['#value'],
+				'city_day_1' => $data['city_day_1']['#value'],
+				'city_day_2' => $data['city_day_2']['#value'],
+				'city_day_3' => $data['city_day_3']['#value'],
+				'city_day_4' => $data['city_day_4']['#value'],
+				'spandays' => $data['no_of_days']['#value'],
+		  ))
+	->execute();
 }
 
 function store_vehicle_details(&$form, &$form_state) {
-  global $user;
+	global $user;
 
-  // Changes can be made to the Webform node settings by modifying this variable:
-  $form['#node']->webform;
+	// Changes can be made to the Webform node settings by modifying this variable:
+	$form['#node']->webform;
 
-  // Insert things into other database tables or modify properties.
-  $data = $form['submitted'];
-  
-  db_insert('__vehicle_details')
-     ->fields(array(
-       'vehicleid' => $data['vehicle_id']['#value'],
-       'vehicledesc' => $data['vehicle_description']['#value'],
-       'vehicleremark' => $data['remarks']['#value'],
-  ))
-  ->execute();
+	// Insert things into other database tables or modify properties.
+	$data = $form['submitted'];
+		  
+	db_merge('__vehicle_details')
+		  ->key(array('vehicleid' => $data['vehicle_id']['#value']))
+		  ->fields(array(
+				'vehicledesc' => $data['vehicle_description']['#value'],
+				'vehicleremark' => $data['remarks']['#value'],
+				'valperday' => $data['per_day_value']['#value'],
+		  ))
+	->execute();
 }
 ?>
