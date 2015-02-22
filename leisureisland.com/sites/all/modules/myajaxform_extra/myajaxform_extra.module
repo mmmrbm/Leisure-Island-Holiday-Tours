@@ -1,0 +1,281 @@
+<?php
+function myajaxform_extra_menu() {
+  $items = array();
+  
+$items['manage_tour'] = array( //this creates a URL that will call this form at "examples/form-example"
+    'title' => t('Manage Tour'), //page title
+    'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+    'page arguments' => array('myajaxform_extra_form'), //put the name of the form here
+    'access arguments' => array('myajaxform_extra_permission'),
+	'access callback' => 'user_is_logged_in',
+  );
+  return 
+
+$items;
+}
+function myajaxform_extra_form($form, &$form_state) {
+  $options_first = _myajaxform_extra_get_first_dropdown_options();
+  $selected = isset($form_state['values']['dropdown_first']) ? $form_state['values']['dropdown_first'] : key($options_first);
+  $form['dropdown_first'] = array(
+		'#type' => 'select',
+		'#title' => t('Select Tour'),
+		'#options' => $options_first,
+		'#default_value' => $selected,
+		'#ajax' => array(
+		'callback' => 'myajaxform_extra_dropdown_callback',
+		'wrapper' => 'dropdowns_div',
+        'effect' => 'slide'
+		),
+	);
+	
+  $form['dropdown_second_fieldset'] = array(
+    '#title' => t('Select Hotels and Fleet'),
+    '#prefix' => '<div id="dropdowns_div">',
+    '#suffix' => '</div>',
+    '#type' => 'fieldset',
+    '#description' => t('Select a Tour to manage Hotel and Travel Accommodations.'),
+  );
+   
+  $num_checkboxes = 0;
+  $selected_item = -1;
+  if (isset($form_state['values']['dropdown_first'])) {
+    $num_checkboxes = _myajaxform_extra_get_second_dropdown_count($form_state['values']['dropdown_first']);
+  }
+  
+  for ($i = 1; $i <= $num_checkboxes; $i++) {
+    $hotel_options = _myajaxform_extra_get_hotel_options($form_state['values']['dropdown_first'], $i);
+    $form['dropdown_second_fieldset']["dropdown$i"] = array(
+      '#type' => 'select',
+      '#title' => t('Hotel for Day ').$i,
+	  '#options' => $hotel_options,
+	  '#default_value' => $selected,
+      '#prefix' => '<div id="hotel_div">',
+      '#suffix' => '</div>',
+    );
+	$selected_item = $i;
+  }
+  
+  if ($selected_item != -1) {
+    $i = $selected_item + 1;
+	$vehicle_options = _myajaxform_extra_get_vehicle_options();
+    $form['dropdown_second_fieldset']["vehicle"] = array(
+      '#type' => 'select',
+      '#title' => t('Vehicle '),
+	  '#options' => $vehicle_options,
+	  '#default_value' => $selected,
+      '#prefix' => '<div id="vehicle_div">',
+      '#suffix' => '</div>',
+    );
+  }
+  
+  $form['manage_tour_remarks'] = array(
+    '#title' => t('Remarks'),
+    '#type' => 'textarea',
+  );
+  
+  $form['box'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id="box">',
+    '#suffix' => '</div>',
+    '#markup' => '<h3>Amount : ---</h3>',
+  );
+
+  $form['calc_amount'] = array(
+    '#type' => 'submit',
+    '#ajax' => array(
+      'callback' => 'myajaxform_extra_calc_amount_callback',
+      'wrapper' => 'box',
+    ),
+    '#value' => t('Calculate Total Amount'),
+  );
+  
+  $form['white_space'] = array(
+     '#markup' => '<br/><br/>'
+  );
+  
+  $form['reset'] = array(
+        '#type' => 'markup',
+        '#markup' => '<input type="reset" value="Reset All Values" class="form-submit">',
+		'#ajax' => array(
+		'callback' => 'myajaxform_extra_reset_callback',
+		'wrapper' => 'dropdowns_div',
+        'effect' => 'slide'
+		),
+  );
+  
+  $form['submit'] = array(
+    '#value' => '       Submit       ',
+    '#type' => 'submit',
+  );
+
+  return $form;
+}
+
+function _myajaxform_extra_get_first_dropdown_options() {
+  $firstoptions = array();
+  $firstoptions[0] = '<Select Tour>';
+  
+  $i = 0;
+  $query = db_select('__tour_details', 'p');
+  $query->fields('p', array('tourid', 'tourname', 'spandays'))
+        ->orderBy('tourid');
+
+  $results = $query->execute();
+  
+  foreach ($results as $row) {
+	$firstoptions[$row->tourid] = $row->tourname;
+	$i = $i + 1;
+  } 
+  return $firstoptions;
+}
+
+function _myajaxform_extra_get_second_dropdown_count($selected_tour_id) {
+  $span_days = 0;
+  $i = 0;
+  $query = db_select('__tour_details', 'p');
+  $query->condition('tourid', $selected_tour_id)
+		->fields('p', array('spandays'))
+        ->orderBy('tourid');
+
+  $results = $query->execute();
+
+  foreach ($results as $row) {
+	$span_days = $row->spandays;
+	$i = $i + 1;
+  } 
+  return $span_days;
+}
+
+function _myajaxform_extra_get_hotel_options($selected_tour_id, $day_num) {
+  $hoteloptions = array();
+  $hoteloptions[0] = '<Select Hotel>';
+  
+  $query = db_select('__tour_details', 't');
+  $query->join('__hotel_details', 'h', 'h.nearestcity = t.city_day_'.$day_num);
+  $query->condition('tourid', $selected_tour_id, '=')
+		->fields('h', array('hotelid', 'hotelname', 'hotelrating'))
+        ->orderBy('hotelid');
+
+  $results = $query->execute();
+
+  foreach ($results as $row) {
+	$hoteloptions[$row->hotelid] = $row->hotelname.' - '.$row->hotelrating;
+	$i = $i + 1;
+  } 
+  return $hoteloptions;
+}
+
+
+function _myajaxform_extra_get_vehicle_options($selected_tour_id, $day_num) {
+  $vehicleoptions = array();
+  $vehicleoptions[0] = '<Select Vehicle>';
+  
+  $i = 0;
+  $query = db_select('__vehicle_details', 'p');
+  $query->fields('p', array('vehicleid', 'vehicledesc', 'vehicleremark'))
+        ->orderBy('vehicleid');
+
+  $results = $query->execute();
+  
+  foreach ($results as $row) {
+	$vehicleoptions[$row->vehicleid] = $row->vehicledesc.' - '.$row->vehicleremark;
+	$i = $i + 1;
+  } 
+  return $vehicleoptions;
+}
+
+function myajaxform_extra_calc_amount_callback ($form, $form_state) {
+  $selected_tour = $form_state['values']['dropdown_first'];
+  $selected_hotel_1 = $form_state['values']['dropdown1'];
+  $selected_hotel_2 = $form_state['values']['dropdown2'];
+  $selected_hotel_3 = $form_state['values']['dropdown3'];
+  $selected_hotel_4 = $form_state['values']['dropdown4'];
+  $selected_vehicle = $form_state['values']['vehicle'];
+  
+  if ($selected_hotel_1) {
+	$hotel_1_charges = "Hotel Charges for ".$selected_hotel_1." : "."10000.00"."<br/>";
+  }
+  if ($selected_hotel_2) {
+	$hotel_2_charges = "Hotel Charges for ".$selected_hotel_2." : "."20000.00"."<br/>";
+  }
+  if ($selected_hotel_3) {
+	$hotel_3_charges = "Hotel Charges for ".$selected_hotel_3." : "."15000.00"."<br/>";
+  }
+  if ($selected_hotel_4) {
+	$hotel_4_charges = "Hotel Charges for ".$selected_hotel_4." : "."12000.00"."<br/>";
+  }
+  if ($selected_vehicle) {
+	$vehicle_charges = "Vehicle Charges for ".$selected_vehicle." : "."10000.00"."<br/>";
+  }
+  
+  if (($selected_hotel_1)||($selected_hotel_2)||($selected_hotel_3)||($selected_hotel_4)||($selected_vehicle)) {
+    if ($selected_hotel_4) {
+		$grand_total = "<br/><b>"."Grand Total : 67000.00"."</b><br/>";
+    }
+	else {
+		$grand_total = "<br/><b>"."Grand Total : 55000.00"."</b><br/>";
+	}
+  }
+
+  $element = $form['box'];
+
+  if (($selected_hotel_1) && ($selected_hotel_2) && ($selected_vehicle)) {
+	  $element['#markup'] = $hotel_1_charges.$hotel_2_charges.$hotel_3_charges.$hotel_4_charges.$vehicle_charges.$grand_total;
+  }
+  else {
+	  $element['#markup'] = "Form has not been completed."."<br/>";
+  }
+  
+  return $element;
+}
+
+
+function myajaxform_extra_dropdown_callback($form, $form_state) {
+  return $form['dropdown_second_fieldset'];
+}
+
+function myajaxform_extra_reset_callback($form, $form_state) {
+  return $form['dropdown_second_fieldset'];
+}
+
+function myajaxform_extra_form_validate($form, &$form_state) {
+   if (!($form_state['values']['dropdown_first'])) {
+     form_set_error('', t('Please select a Tour.'));
+   }
+   
+   if ((!($form_state['values']['dropdown1'])) || (!($form_state['values']['dropdown2'])) || (!($form_state['values']['dropdown3']))) {
+     form_set_error('', t('Please select Hotels.'));
+   }
+   
+   if (!($form_state['values']['vehicle'])) {
+     form_set_error('', t('Please select Vehicle.'));
+   }
+}
+function myajaxform_extra_form_submit($form, &$form_state) {
+    global $user;
+
+	$nid = db_insert('___managed_tours')
+	  ->fields(array(
+		'userid' => $user->name,
+		'tourid' => ($form_state['values']['dropdown_first']),
+		'hotelid1' => ($form_state['values']['dropdown1']),
+		'hotelid2' => ($form_state['values']['dropdown2']),
+		'hotelid3' => ($form_state['values']['dropdown3']),
+		//'hotelid4' => ($form_state['values']['dropdown4']),
+		'vehicle' => ($form_state['values']['vehicle']),
+		'remarks' => ($form_state['values']['manage_tour_remarks']),
+	  ))
+	  ->execute();
+	  
+	drupal_set_message(t("Thanks for submitting your tour details. We will contact you soon."), 'Success');
+}
+
+
+function myajaxform_extra_permission() {
+  return array(
+    'access current_posts content' => array(
+      'title' => t('Access content for the Manage Tours'),
+    )
+  );
+}
+?>
