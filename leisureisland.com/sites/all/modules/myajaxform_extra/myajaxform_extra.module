@@ -90,7 +90,18 @@ function myajaxform_extra_form($form, &$form_state) {
   );
   
   $form['white_space'] = array(
-     '#markup' => '<br/><br/>'
+     '#markup' => '<br/>'
+  );
+  
+   $form['submit_info'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id="submit_info">',
+    '#suffix' => '</div>',
+    '#markup' => '<h3></h3>',
+  );
+  
+  $form['white_space_2'] = array(
+     '#markup' => '<br/>'
   );
   
   $form['reset'] = array(
@@ -106,6 +117,10 @@ function myajaxform_extra_form($form, &$form_state) {
   $form['submit'] = array(
     '#value' => '       Submit       ',
     '#type' => 'submit',
+    '#ajax' => array(
+      'callback' => 'myajaxform_extra_final_submit_callback',
+      'wrapper' => 'submit_info',
+    ),
   );
 
   return $form;
@@ -251,7 +266,7 @@ function myajaxform_extra_form_validate($form, &$form_state) {
      form_set_error('', t('Please select Vehicle.'));
    }
 }
-function myajaxform_extra_form_submit($form, &$form_state) {
+function myajaxform_extra_final_submit_callback($form, &$form_state) {
     global $user;
 
 	$nid = db_insert('___managed_tours')
@@ -267,7 +282,26 @@ function myajaxform_extra_form_submit($form, &$form_state) {
 	  ))
 	  ->execute();
 	  
-	drupal_set_message(t("Thanks for submitting your tour details. We will contact you soon."), 'Success');
+	$element = $form['submit_info'];
+	$output = "	<style>
+					.demo td {
+						background:#BFFFBF;
+						font:italic bold 6px/30px Georgia, serif;
+						text-align: center
+					}
+				</style>
+				<table class='demo'>
+					<tbody>
+					<tr>
+						<td><font color='green' size='3'>Thanks for submitting your tour details. We will contact you soon.</font></td>
+					</tr>
+					</tbody>
+				</table>";
+	
+	$element['#markup'] = $output;
+	//drupal_set_message(t("Thanks for submitting your tour details. We will contact you soon."), 'Success');
+	
+	return $element;
 }
 
 

@@ -171,6 +171,7 @@ a.feed-icon {
 table {
   border: 0;
   border-spacing: 0;
+  border-collapse: collapse;
   font-size: 0.857em;
   margin: 0px 0;
   width: 100%;
@@ -182,6 +183,8 @@ table table {
   font-size: 1em;
 }
 table tr th {
+  background: #757575;
+  background: rgba(0, 0, 0, 0.51);
   border-bottom-style: none;
 }
 table tr th,
@@ -192,6 +195,7 @@ table tr th a:hover {
 }
 table tbody tr th {
   vertical-align: top;
+  border: 1px solid black
 }
 tr td,
 tr th {
